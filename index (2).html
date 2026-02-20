@@ -1,0 +1,2900 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PathwayAI — Industry-Grade AI Career Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --bg-primary: #0a0a0b;
+  --bg-secondary: #111113;
+  --bg-elevated: #17171a;
+  --bg-card: #1c1c20;
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-default: rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.18);
+  --text-primary: #f2f2f3;
+  --text-secondary: #8b8b96;
+  --text-tertiary: #52525c;
+  --text-disabled: #38383f;
+  --accent-blue: #3b82f6;
+  --accent-blue-dim: rgba(59,130,246,0.12);
+  --accent-blue-border: rgba(59,130,246,0.25);
+  --accent-green: #22c55e;
+  --accent-green-dim: rgba(34,197,94,0.10);
+  --accent-amber: #f59e0b;
+  --accent-amber-dim: rgba(245,158,11,0.10);
+  --accent-purple: #a855f7;
+  --accent-purple-dim: rgba(168,85,247,0.10);
+  --accent-red: #ef4444;
+  --accent-teal: #14b8a6;
+  --accent-orange: #f97316;
+  --accent-indigo: #6366f1;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --font-ui: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+[data-theme="light"] {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f4f4f5;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --border-subtle: rgba(0,0,0,0.05);
+  --border-default: rgba(0,0,0,0.09);
+  --border-strong: rgba(0,0,0,0.15);
+  --text-primary: #09090b;
+  --text-secondary: #52525c;
+  --text-tertiary: #a1a1aa;
+  --text-disabled: #d4d4d8;
+  --accent-blue-dim: rgba(59,130,246,0.08);
+  --accent-green-dim: rgba(34,197,94,0.08);
+  --accent-amber-dim: rgba(245,158,11,0.08);
+  --accent-purple-dim: rgba(168,85,247,0.08);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  font-family: var(--font-ui);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::selection { background: rgba(59,130,246,0.3); }
+
+/* ═══════════════════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════════════════ */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════ */
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+.label-accent { color: var(--accent-blue); }
+h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.025em; }
+h3 { font-size: 1.1rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+h4 { font-size: 0.9rem; font-weight: 600; }
+p { color: var(--text-secondary); font-size: 0.93rem; line-height: 1.7; }
+code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: rgba(10,10,11,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.3s;
+}
+[data-theme="light"] #nav { background: rgba(250,250,250,0.88); }
+.nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; cursor: pointer;
+}
+.logo-icon {
+  width: 28px; height: 28px;
+  background: var(--accent-blue);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.logo-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.logo-name span { color: var(--accent-blue); }
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+}
+.nav-link {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  background: none; border: none;
+  font-family: var(--font-ui);
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--text-primary); background: var(--bg-elevated); }
+.nav-link.active { color: var(--text-primary); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.theme-btn {
+  width: 34px; height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  transition: all 0.15s;
+  color: var(--text-secondary);
+}
+.theme-btn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  font-family: var(--font-ui);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent-blue);
+  color: #fff;
+}
+.btn-primary:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.35); }
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+}
+.btn-secondary:hover { border-color: var(--border-strong); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+.btn-ghost:hover { color: var(--text-primary); border-color: var(--border-strong); background: var(--bg-elevated); }
+.btn-lg { padding: 12px 24px; font-size: 0.9rem; border-radius: var(--radius-md); }
+
+/* ═══════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════ */
+.page { display: none; padding-top: 60px; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════════
+   ONBOARDING — ROLE SELECTOR
+═══════════════════════════════════════════ */
+#onboarding {
+  position: fixed; inset: 0;
+  z-index: 2000;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+#onboarding.exit { opacity: 0; transform: scale(0.97); pointer-events: none; }
+
+.onboard-wrap { width: 100%; max-width: 860px; }
+
+.onboard-header { margin-bottom: 48px; }
+.onboard-label { margin-bottom: 16px; }
+.onboard-title { margin-bottom: 12px; }
+.onboard-sub { max-width: 520px; font-size: 0.95rem; }
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.role-option {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+.role-option::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.role-option:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.role-option:hover::before { opacity: 1; }
+.role-option[data-color="blue"]::before { background: var(--accent-blue); }
+.role-option[data-color="green"]::before { background: var(--accent-green); }
+.role-option[data-color="purple"]::before { background: var(--accent-purple); }
+.role-option[data-color="amber"]::before { background: var(--accent-amber); }
+.role-option[data-color="teal"]::before { background: var(--accent-teal); }
+.role-option[data-color="orange"]::before { background: var(--accent-orange); }
+
+.role-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+.role-icon.blue { background: var(--accent-blue-dim); }
+.role-icon.green { background: var(--accent-green-dim); }
+.role-icon.purple { background: var(--accent-purple-dim); }
+.role-icon.amber { background: var(--accent-amber-dim); }
+.role-icon.teal { background: rgba(20,184,166,0.1); }
+.role-icon.orange { background: rgba(249,115,22,0.1); }
+
+.role-title { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; letter-spacing: -0.01em; }
+.role-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 12px; }
+.role-timeline {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+.role-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  padding: 88px 0 72px;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-eyebrow { margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.eyebrow-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-blue-dim);
+  border: 1px solid var(--accent-blue-border);
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-blue);
+  letter-spacing: 0.02em;
+}
+.eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-green); animation: pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+.hero-title { margin-bottom: 20px; }
+.hero-title .muted { color: var(--text-secondary); font-weight: 400; }
+.hero-sub { font-size: 0.95rem; max-width: 480px; margin-bottom: 32px; }
+.hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+.hero-stat { }
+.hero-stat-num { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text-primary); line-height: 1; margin-bottom: 3px; }
+.hero-stat-label { font-size: 0.72rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+/* Persona display card */
+.persona-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeSlideIn 0.6s var(--ease-out) both;
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.persona-card-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.persona-avatar {
+  width: 42px; height: 42px;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.persona-card-name { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 2px; }
+.persona-card-meta { font-size: 0.72rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+.persona-progress { }
+.progress-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.progress-label span:first-child { font-size: 0.72rem; color: var(--text-secondary); font-weight: 500; }
+.progress-label span:last-child { font-size: 0.72rem; color: var(--accent-blue); font-family: var(--font-mono); font-weight: 500; }
+.progress-track {
+  height: 4px;
+  background: var(--border-default);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent-blue);
+  transition: width 1.2s var(--ease-out);
+  width: 0;
+}
+.persona-levels { display: flex; gap: 6px; flex-wrap: wrap; }
+.lvl-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  border: 1px solid;
+}
+.lvl-badge.done { background: var(--accent-green-dim); border-color: rgba(34,197,94,0.2); color: var(--accent-green); }
+.lvl-badge.current { background: var(--accent-blue-dim); border-color: var(--accent-blue-border); color: var(--accent-blue); }
+.lvl-badge.locked { background: transparent; border-color: var(--border-subtle); color: var(--text-disabled); }
+
+/* ═══════════════════════════════════════════
+   CAREER LEVELS — ROADMAP
+═══════════════════════════════════════════ */
+.roadmap-section { padding: 80px 0; }
+.roadmap-header { margin-bottom: 48px; }
+.roadmap-header h2 { margin-bottom: 10px; }
+
+/* Level cards */
+.level-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+
+/* Vertical connector */
+.level-connector {
+  position: absolute;
+  left: 27px;
+  top: 56px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-default);
+}
+
+.level-item {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.level-item.visible { opacity: 1; transform: translateY(0); }
+
+.level-node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.level-node {
+  width: 54px; height: 54px;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+}
+.level-node::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.level-node.l0 { border-color: rgba(139,92,246,0.3); color: var(--accent-purple); }
+.level-node.l0::after { background: var(--accent-purple-dim); }
+.level-node.l1 { border-color: rgba(34,197,94,0.3); color: var(--accent-green); }
+.level-node.l1::after { background: var(--accent-green-dim); }
+.level-node.l2 { border-color: rgba(59,130,246,0.3); color: var(--accent-blue); }
+.level-node.l2::after { background: var(--accent-blue-dim); }
+.level-node.l3 { border-color: rgba(245,158,11,0.3); color: var(--accent-amber); }
+.level-node.l3::after { background: var(--accent-amber-dim); }
+.level-node.l4 { border-color: rgba(239,68,68,0.3); color: var(--accent-red); }
+.level-node.l4::after { background: rgba(239,68,68,0.08); }
+.level-node.l5 { border-color: rgba(168,85,247,0.3); color: var(--accent-purple); }
+.level-node.l5::after { background: var(--accent-purple-dim); }
+.level-node.l6 { border-color: rgba(249,115,22,0.3); color: var(--accent-orange); }
+.level-node.l6::after { background: rgba(249,115,22,0.08); }
+.level-node.l7 { border-color: rgba(20,184,166,0.3); color: var(--accent-teal); }
+.level-node.l7::after { background: rgba(20,184,166,0.08); }
+
+.level-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.level-card:hover { border-color: var(--border-default); }
+
+.level-card-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.level-card-header:hover .level-title { color: var(--text-primary); }
+
+.level-info { flex: 1; }
+.level-label { margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.level-num-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.level-title { font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 4px; transition: color 0.2s; }
+.level-subtitle { font-size: 0.78rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+.level-toggle {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: all 0.2s;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+.level-card.open .level-toggle { background: var(--accent-blue-dim); border-color: var(--accent-blue-border); color: var(--accent-blue); }
+
+.level-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 24px 16px; }
+.tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+.tag:hover { border-color: var(--border-default); color: var(--text-primary); }
+
+.level-body {
+  display: none;
+  border-top: 1px solid var(--border-subtle);
+  animation: expandBody 0.3s var(--ease-out);
+}
+.level-card.open .level-body { display: block; }
+@keyframes expandBody { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+.level-body-inner { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.resource-block { }
+.resource-block-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.resource-block-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.resource-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.resource-row:hover { border-color: var(--accent-blue-border); background: var(--accent-blue-dim); }
+.rr-icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.rr-content { flex: 1; min-width: 0; }
+.rr-title { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; line-height: 1.3; }
+.rr-meta { font-size: 0.7rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+.rr-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border: 1px solid rgba(34,197,94,0.2);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+.rr-badge.paid { background: var(--accent-amber-dim); color: var(--accent-amber); border-color: rgba(245,158,11,0.2); }
+
+/* Projects & Roles block */
+.proj-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  line-height: 1.5;
+}
+.proj-item:last-child { border-bottom: none; }
+.proj-bullet {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.unlock-row {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  display: flex; align-items: center; gap: 12px;
+}
+.unlock-label { font-size: 0.68rem; font-family: var(--font-mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; }
+.unlock-roles { display: flex; gap: 6px; flex-wrap: wrap; }
+.unlock-role {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: var(--accent-green-dim);
+  border: 1px solid rgba(34,197,94,0.2);
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+}
+
+/* Interview Q section */
+.interview-block {
+  grid-column: 1 / -1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+.interview-q {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.5;
+}
+.interview-q:last-child { border-bottom: none; }
+.q-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  padding: 1px 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   SKILL GAP ANALYZER
+═══════════════════════════════════════════ */
+.analyzer-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.skill-checklist {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: sticky;
+  top: 80px;
+}
+.checklist-title { font-size: 0.83rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle); }
+.checklist-section { margin-bottom: 16px; }
+.checklist-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  margin-bottom: 8px;
+}
+.check-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 5px 6px;
+  transition: background 0.15s;
+}
+.check-item:hover { background: var(--bg-elevated); }
+.check-box {
+  width: 16px; height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border-strong);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px;
+  transition: all 0.15s;
+  background: var(--bg-elevated);
+}
+.check-box.checked { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+.check-text { font-size: 0.78rem; color: var(--text-secondary); }
+
+.readiness-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.readiness-score-wrap {
+  display: flex; align-items: center; gap: 24px;
+  padding: 24px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 24px;
+}
+.score-circle {
+  width: 90px; height: 90px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.score-circle svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.score-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1;
+  font-family: var(--font-mono);
+  position: relative;
+  z-index: 1;
+}
+.score-info-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.score-info-sub { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
+.skill-bars { display: flex; flex-direction: column; gap: 14px; }
+.skill-bar-row { }
+.skill-bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.skill-bar-label span:first-child { font-size: 0.78rem; font-weight: 500; color: var(--text-secondary); }
+.skill-bar-label span:last-child { font-size: 0.72rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+.skill-bar-track { height: 5px; background: var(--border-default); border-radius: 3px; overflow: hidden; }
+.skill-bar-fill { height: 100%; border-radius: 3px; transition: width 1s var(--ease-out); width: 0; }
+
+/* ═══════════════════════════════════════════
+   CERTIFICATIONS PAGE
+═══════════════════════════════════════════ */
+.cert-filter { display: flex; gap: 6px; margin-bottom: 32px; flex-wrap: wrap; }
+.filter-btn {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-default);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  transition: all 0.15s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--accent-blue-dim);
+  border-color: var(--accent-blue-border);
+  color: var(--accent-blue);
+}
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.cert-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all 0.2s;
+  display: flex; flex-direction: column;
+  gap: 14px;
+}
+.cert-card:hover { border-color: var(--border-default); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cert-header { display: flex; align-items: flex-start; gap: 12px; }
+.cert-logo {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.cert-info { flex: 1; }
+.cert-provider { font-size: 0.68rem; color: var(--text-tertiary); font-family: var(--font-mono); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+.cert-name { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em; line-height: 1.3; }
+.cert-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.cert-importance {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+.importance-label { font-weight: 600; color: var(--text-primary); margin-bottom: 2px; font-size: 0.75rem; }
+.cert-value-high { border-left: 2px solid var(--accent-green); padding-left: 10px; }
+.cert-value-mid { border-left: 2px solid var(--accent-amber); padding-left: 10px; }
+.cert-value-low { border-left: 2px solid var(--text-tertiary); padding-left: 10px; }
+
+/* ═══════════════════════════════════════════
+   CAREER EXPECTATION MAP
+═══════════════════════════════════════════ */
+.career-map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.career-map-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.career-map-card:hover { border-color: var(--border-default); box-shadow: var(--shadow-md); }
+.cmcard-header {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; gap: 12px;
+}
+.cmcard-icon {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.cmcard-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+.cmcard-salary { font-size: 0.72rem; font-family: var(--font-mono); color: var(--accent-green); }
+.cmcard-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+.cmcard-section-label {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-tertiary);
+  font-family: var(--font-mono); margin-bottom: 6px;
+}
+.cmcard-items { display: flex; flex-wrap: wrap; gap: 5px; }
+.cmcard-item {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+.cmcard-timeline {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  padding: 10px 12px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  display: flex; align-items: center; gap: 6px;
+}
+.cmcard-timeline::before { content: '⏱'; font-size: 12px; }
+
+/* ═══════════════════════════════════════════
+   INTERVIEW PAGE
+═══════════════════════════════════════════ */
+.interview-grid { display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: start; }
+.interview-nav {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  position: sticky;
+  top: 80px;
+}
+.interview-nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-secondary);
+  border: none; background: none;
+  font-family: var(--font-ui);
+  width: 100%; text-align: left;
+}
+.interview-nav-item:hover { background: var(--bg-elevated); color: var(--text-primary); }
+.interview-nav-item.active { background: var(--accent-blue-dim); color: var(--accent-blue); }
+.interview-nav-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.interview-content { }
+.iq-section { margin-bottom: 24px; }
+.iq-section-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border: 1px solid var(--border-default);
+  border-bottom: none;
+}
+.iq-icon { font-size: 1.1rem; }
+.iq-title { font-size: 0.9rem; font-weight: 700; }
+.iq-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  overflow: hidden;
+}
+.iq-item {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.iq-item:last-child { border-bottom: none; }
+.iq-n {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.iq-q { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.55; }
+.iq-difficulty {
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: auto;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.diff-easy { background: var(--accent-green-dim); color: var(--accent-green); }
+.diff-med { background: var(--accent-amber-dim); color: var(--accent-amber); }
+.diff-hard { background: rgba(239,68,68,0.1); color: var(--accent-red); }
+
+/* ═══════════════════════════════════════════
+   GLOSSARY
+═══════════════════════════════════════════ */
+.glossary-layout { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+.glossary-az {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  position: sticky; top: 80px;
+}
+.az-title { font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; padding: 0 4px; }
+.az-letters { display: flex; flex-wrap: wrap; gap: 3px; }
+.az-letter {
+  width: 28px; height: 28px;
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-tertiary);
+}
+.az-letter:hover { background: var(--bg-elevated); color: var(--text-primary); }
+.glossary-list { display: flex; flex-direction: column; gap: 8px; }
+.gloss-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  transition: border-color 0.15s;
+}
+.gloss-item:hover { border-color: var(--border-default); }
+.gloss-term {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.gloss-def { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; }
+.gloss-search {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-size: 0.83rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+  margin-bottom: 20px;
+}
+.gloss-search:focus { border-color: var(--accent-blue); }
+
+/* ═══════════════════════════════════════════
+   MATH PAGE
+═══════════════════════════════════════════ */
+.math-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.math-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.math-card:hover { border-color: var(--border-default); }
+.math-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-elevated);
+}
+.math-icon { font-size: 1.2rem; }
+.math-title { font-size: 0.88rem; font-weight: 700; }
+.math-card-body { padding: 16px 20px; }
+.math-formula {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+}
+.math-explain { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; }
+.math-why { margin-top: 10px; padding: 10px 12px; background: var(--accent-blue-dim); border-radius: var(--radius-sm); border: 1px solid var(--accent-blue-border); font-size: 0.75rem; color: var(--accent-blue); }
+.math-why strong { display: block; margin-bottom: 3px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ═══════════════════════════════════════════
+   SECTION HEADERS
+═══════════════════════════════════════════ */
+.section-header { margin-bottom: 40px; }
+.section-header h2 { margin-bottom: 8px; }
+.section-header p { font-size: 0.88rem; max-width: 520px; }
+
+/* ═══════════════════════════════════════════
+   HOSTING GUIDE
+═══════════════════════════════════════════ */
+.hosting-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.hosting-step {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.hosting-step:hover { border-color: var(--border-default); }
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  margin-bottom: 10px;
+}
+.step-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 8px; }
+.step-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+.step-code {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-green);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 40px 0;
+}
+.footer-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-brand { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.footer-copy { font-size: 0.72rem; color: var(--text-tertiary); font-family: var(--font-mono); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { font-size: 0.78rem; color: var(--text-tertiary); text-decoration: none; transition: color 0.15s; cursor: pointer; }
+.footer-links a:hover { color: var(--text-primary); }
+
+/* ═══════════════════════════════════════════
+   FLOATING ASSISTANT
+═══════════════════════════════════════════ */
+.float-assist {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 500;
+}
+.float-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+  transition: all 0.2s;
+}
+.float-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(59,130,246,0.5); }
+.float-panel {
+  position: absolute;
+  bottom: 60px; right: 0;
+  width: 280px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: none;
+  animation: fadeSlideIn 0.25s var(--ease-out);
+  overflow: hidden;
+}
+.float-panel.open { display: block; }
+.float-panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+}
+.float-options { padding: 6px; }
+.float-opt {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.float-opt:hover { background: var(--bg-card); color: var(--text-primary); }
+.float-opt-icon { font-size: 13px; }
+
+/* ═══════════════════════════════════════════
+   UTILITIES & ANIMATIONS
+═══════════════════════════════════════════ */
+.divider { height: 1px; background: var(--border-subtle); margin: 48px 0; }
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.animate-in.in-view { opacity: 1; transform: translateY(0); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.badge-blue { background: var(--accent-blue-dim); border-color: var(--accent-blue-border); color: var(--accent-blue); }
+.badge-green { background: var(--accent-green-dim); border-color: rgba(34,197,94,0.25); color: var(--accent-green); }
+.badge-amber { background: var(--accent-amber-dim); border-color: rgba(245,158,11,0.25); color: var(--accent-amber); }
+.badge-purple { background: var(--accent-purple-dim); border-color: rgba(168,85,247,0.25); color: var(--accent-purple); }
+.badge-red { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.25); color: var(--accent-red); }
+
+/* Page header */
+.page-header {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 48px;
+}
+.page-header h2 { margin-bottom: 8px; }
+.page-header p { font-size: 0.88rem; max-width: 520px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .persona-card { display: none; }
+  .analyzer-grid { grid-template-columns: 1fr; }
+  .interview-grid { grid-template-columns: 1fr; }
+  .interview-nav { display: flex; overflow-x: auto; position: static; }
+  .glossary-layout { grid-template-columns: 1fr; }
+  .level-body-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .role-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.8rem; }
+  .section { padding: 60px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="logo" onclick="goHome()">
+      <div class="logo-icon">⬡</div>
+      <div class="logo-name">Pathway<span>AI</span></div>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="showPage('roadmap')">Roadmap</button>
+      <button class="nav-link" onclick="showPage('careers')">Career Map</button>
+      <button class="nav-link" onclick="showPage('certifications')">Certifications</button>
+      <button class="nav-link" onclick="showPage('interview')">Interview Prep</button>
+      <button class="nav-link" onclick="showPage('analyzer')">Skill Gap</button>
+      <button class="nav-link" onclick="showPage('glossary')">Glossary</button>
+      <button class="nav-link" onclick="showPage('math')">Math Guide</button>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme" id="theme-btn">☾</button>
+    </div>
+  </div>
+</nav>
+
+<!-- FLOATING ASSISTANT -->
+<div class="float-assist">
+  <div class="float-panel" id="float-panel">
+    <div class="float-panel-header">⚡ Quick navigate</div>
+    <div class="float-options">
+      <div class="float-opt" onclick="showPage('roadmap')"><span class="float-opt-icon">🗺</span> View full roadmap</div>
+      <div class="float-opt" onclick="showPage('analyzer')"><span class="float-opt-icon">📊</span> Check skill gap</div>
+      <div class="float-opt" onclick="showPage('certifications')"><span class="float-opt-icon">🏅</span> Free certifications</div>
+      <div class="float-opt" onclick="showPage('interview')"><span class="float-opt-icon">💬</span> Interview questions</div>
+      <div class="float-opt" onclick="showPage('careers')"><span class="float-opt-icon">💼</span> Career expectations</div>
+    </div>
+  </div>
+  <button class="float-btn" onclick="toggleFloat()">⚡</button>
+</div>
+
+<!-- ════════════════════════════════════════
+     ONBOARDING
+════════════════════════════════════════ -->
+<div id="onboarding">
+  <div class="onboard-wrap">
+    <div class="onboard-header">
+      <div class="label label-accent onboard-label">PathwayAI — Industry-Aligned AI Roadmap</div>
+      <h1 class="onboard-title">What AI role do you<br>want to become?</h1>
+      <p class="onboard-sub">Select your target role. We'll show you exactly what companies expect, which skills to build, and the fastest path to get hired.</p>
+    </div>
+    <div class="role-grid">
+      <div class="role-option" data-color="green" onclick="selectRole('analyst')">
+        <div class="role-icon green">📊</div>
+        <div class="role-title">Data Analyst / Scientist</div>
+        <div class="role-desc">Work with data to extract business insights. High demand across all industries.</div>
+        <div class="role-timeline"><div class="role-dot" style="background:#22c55e"></div> 6–10 months · Levels 0–3</div>
+      </div>
+      <div class="role-option" data-color="blue" onclick="selectRole('ml')">
+        <div class="role-icon blue">🤖</div>
+        <div class="role-title">ML / AI Engineer</div>
+        <div class="role-desc">Build, train and deploy machine learning models at production scale.</div>
+        <div class="role-timeline"><div class="role-dot" style="background:#3b82f6"></div> 12–18 months · Levels 0–4</div>
+      </div>
+      <div class="role-option" data-color="purple" onclick="selectRole('genai')">
+        <div class="role-icon purple">✨</div>
+        <div class="role-title">Generative AI Engineer</div>
+        <div class="role-desc">Build LLM-powered apps, RAG systems, chatbots and AI pipelines.</div>
+        <div class="role-timeline"><div class="role-dot" style="background:#a855f7"></div> 8–14 months · Levels 0–2, 5</div>
+      </div>
+      <div class="role-option" data-color="amber" onclick="selectRole('prompt')">
+        <div class="role-icon amber">✍️</div>
+        <div class="role-title">Prompt Engineer</div>
+        <div class="role-desc">Design, test and optimize prompts for AI systems. Fastest entry into AI.</div>
+        <div class="role-timeline"><div class="role-dot" style="background:#f59e0b"></div> 3–6 months · Levels 0–1, 5</div>
+      </div>
+      <div class="role-option" data-color="orange" onclick="selectRole('agent')">
+        <div class="role-icon orange">🧩</div>
+        <div class="role-title">AI Agent Engineer</div>
+        <div class="role-desc">Build autonomous AI systems with tool-calling and multi-agent pipelines.</div>
+        <div class="role-timeline"><div class="role-dot" style="background:#f97316"></div> 15–20 months · Levels 0–6</div>
+      </div>
+      <div class="role-option" data-color="teal" onclick="selectRole('senior')">
+        <div class="role-icon teal">🏗</div>
+        <div class="role-title">Senior / Architect</div>
+        <div class="role-desc">Lead AI systems design, teams and company-wide AI strategy.</div>
+        <div class="role-timeline"><div class="role-dot" style="background:#14b8a6"></div> 3–5 years · All levels</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow">
+            <div class="eyebrow-pill"><div class="eyebrow-dot"></div> Industry-aligned · Updated 2025</div>
+          </div>
+          <h1 class="hero-title">The AI Career Roadmap<br><span class="muted">built for getting hired</span></h1>
+          <p class="hero-sub">Not just another tutorial list. A structured, company-expectation-aligned roadmap that tells you exactly what to learn, build and prove — at every level.</p>
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-lg" onclick="showPage('roadmap')">View Full Roadmap →</button>
+            <button class="btn btn-secondary btn-lg" onclick="showPage('analyzer')">Check Skill Gap</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-num">8</div>
+              <div class="hero-stat-label">career levels</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">40+</div>
+              <div class="hero-stat-label">free resources</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">6</div>
+              <div class="hero-stat-label">AI roles mapped</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">100%</div>
+              <div class="hero-stat-label">industry-aligned</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="persona-card" id="home-persona-card">
+            <div class="persona-card-header">
+              <div class="persona-avatar" id="home-persona-avatar" style="background:rgba(59,130,246,0.12)">🎯</div>
+              <div>
+                <div class="persona-card-name" id="home-persona-name">Select a role to begin</div>
+                <div class="persona-card-meta" id="home-persona-meta">Choose your target role on first visit</div>
+              </div>
+            </div>
+            <div class="persona-progress">
+              <div class="progress-label"><span>Your roadmap progress</span><span id="home-prog-pct">0%</span></div>
+              <div class="progress-track"><div class="progress-fill" id="home-prog-fill" style="width:0%"></div></div>
+              <div class="persona-levels" id="home-persona-levels">
+                <div class="lvl-badge locked">L0</div>
+                <div class="lvl-badge locked">L1</div>
+                <div class="lvl-badge locked">L2</div>
+                <div class="lvl-badge locked">L3</div>
+                <div class="lvl-badge locked">L4</div>
+                <div class="lvl-badge locked">L5</div>
+                <div class="lvl-badge locked">L6</div>
+                <div class="lvl-badge locked">L7</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section-sm">
+    <div class="container">
+      <div class="section-header animate-in">
+        <div class="label" style="margin-bottom:8px">How it works</div>
+        <h2>Built around company hiring reality</h2>
+        <p>Most AI courses teach theory. We map exactly what companies check when they hire — so you build what actually matters.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+        <div class="animate-in" style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-size:1.2rem;margin-bottom:12px">🎯</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em">Role-first design</div>
+          <p style="font-size:0.78rem">Pick your target role. The roadmap is filtered to exactly what that role needs.</p>
+        </div>
+        <div class="animate-in" style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-size:1.2rem;margin-bottom:12px">🏢</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em">Company expectations</div>
+          <p style="font-size:0.78rem">See what FAANG, startups and mid-stage companies actually check for each role.</p>
+        </div>
+        <div class="animate-in" style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-size:1.2rem;margin-bottom:12px">💬</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em">Interview questions</div>
+          <p style="font-size:0.78rem">Curated interview questions by role and level — so you know what to prepare.</p>
+        </div>
+        <div class="animate-in" style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-size:1.2rem;margin-bottom:12px">📊</div>
+          <div style="font-size:0.88rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em">Skill gap analyzer</div>
+          <p style="font-size:0.78rem">Check your current skills against target-role expectations. See exactly what's missing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     ROADMAP PAGE
+════════════════════════════════════════ -->
+<div id="page-roadmap" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">Career Roadmap</div>
+      <h2>From Zero to Senior AI Engineer</h2>
+      <p>8 progressive levels aligned with real company hiring standards. Click any level to expand full details, resources, and interview questions.</p>
+    </div>
+
+    <div class="roadmap-section" style="padding:0 0 80px">
+      <div class="level-list" id="level-list">
+        <div class="level-connector"></div>
+
+        <!-- L0 -->
+        <div class="level-item" id="li-0">
+          <div class="level-node-col">
+            <div class="level-node l0" onclick="toggleLevel(0)">L0</div>
+          </div>
+          <div class="level-card" id="lcard-0">
+            <div class="level-card-header" onclick="toggleLevel(0)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.25);color:var(--accent-purple)">Foundation</div>
+                  <div class="badge badge-green">Required for ALL roles</div>
+                </div>
+                <div class="level-title">Tech Foundation — How Computers & the Web Work</div>
+                <div class="level-subtitle">// prerequisite · no experience needed · 4–6 weeks</div>
+              </div>
+              <div class="level-toggle" id="ltog-0">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">How computers work</span>
+              <span class="tag">Internet & HTTP</span>
+              <span class="tag">Linux & terminal</span>
+              <span class="tag">Git & GitHub</span>
+              <span class="tag">Problem-solving mindset</span>
+              <span class="tag">VS Code setup</span>
+            </div>
+            <div class="level-body" id="lbody-0">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 English Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com/watch?v=Dxcc6ycZ73M')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">CS50x — Harvard Introduction to Computer Science</div>
+                      <div class="rr-meta">Harvard / edX · 12 weeks · Best CS foundation</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://www.freecodecamp.org')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Linux Command Line Basics</div>
+                      <div class="rr-meta">freeCodeCamp · YouTube · 3 hours</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://learngitbranching.js.org')">
+                    <div class="rr-icon">🌐</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Learn Git Branching (Interactive)</div>
+                      <div class="rr-meta">learngitbranching.js.org · Visual & interactive</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Tamil Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Tamil Selvan — Computer Basics Tamil</div>
+                      <div class="rr-meta">YouTube Tamil · Beginner friendly</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">5 Minutes Engineering Tamil</div>
+                      <div class="rr-meta">YouTube Tamil · Linux & Git in Tamil</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Milestone Projects</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Set up Linux (WSL or dual boot) and navigate without GUI</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Create a GitHub profile, push your first repository</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Write a simple shell script that automates a task</div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🏢 What Companies Check</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Can you use command line comfortably? (99% of AI work is terminal)</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Do you use Git with proper commit messages?</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Is your GitHub profile active and organized?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Unlocks</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">All AI roles require this</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L1 -->
+        <div class="level-item" id="li-1">
+          <div class="level-node-col">
+            <div class="level-node l1" onclick="toggleLevel(1)">L1</div>
+          </div>
+          <div class="level-card" id="lcard-1">
+            <div class="level-card-header" onclick="toggleLevel(1)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.25);color:var(--accent-green)">Level 1</div>
+                  <div class="badge badge-blue">Entry level</div>
+                </div>
+                <div class="level-title">Python & Data Foundations</div>
+                <div class="level-subtitle">// 8–12 weeks · strong Python is non-negotiable</div>
+              </div>
+              <div class="level-toggle" id="ltog-1">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">Python core</span>
+              <span class="tag">OOP basics</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Matplotlib / Seaborn</span>
+              <span class="tag">Data cleaning</span>
+              <span class="tag">EDA</span>
+              <span class="tag">SQL basics</span>
+            </div>
+            <div class="level-body" id="lbody-1">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 English Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://cs50.harvard.edu/python/')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">CS50P — Python (Harvard)</div>
+                      <div class="rr-meta">Best Python course online · Project-based · Certificate</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://kaggle.com/learn/python')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Kaggle Learn — Python + Pandas</div>
+                      <div class="rr-meta">Kaggle · In-browser · Certified · Recommended</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com/watch?v=rfscVS0vtbw')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Python Full Course — freeCodeCamp</div>
+                      <div class="rr-meta">YouTube · 4.5 hours · Very practical</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Tamil Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Naveen Reddy — Python Tamil</div>
+                      <div class="rr-meta">YouTube Tamil · Step-by-step · Popular</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Python Crash Course — Tamil Version</div>
+                      <div class="rr-meta">YouTube Tamil · Pandas & NumPy explained</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Projects Companies Value</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Sales/revenue dashboard from CSV — Pandas + Matplotlib</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>EDA on any public Kaggle dataset with full insights report</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Web scraper → clean data → visualize trends</div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🏢 What Companies Check</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Clean, readable Python code — not just working code</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Handling messy, real-world data (nulls, outliers, types)</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Can you write functions, classes, and reusable modules?</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>SQL is often tested alongside Python at this level</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 Common Interview Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>What's the difference between a list, tuple, and set in Python? When do you use each?</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>How do you handle missing values in a Pandas DataFrame? Walk me through your approach.</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>Write a function to find duplicate rows in a DataFrame and remove them.</div>
+                  <div class="interview-q"><div class="q-num">Q4</div>How would you merge two datasets with different schemas? What edge cases do you consider?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles unlocked</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">Data Intern</div>
+                  <div class="unlock-role">Junior Data Analyst</div>
+                  <div class="unlock-role">Analytics Intern</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L2 -->
+        <div class="level-item" id="li-2">
+          <div class="level-node-col">
+            <div class="level-node l2" onclick="toggleLevel(2)">L2</div>
+          </div>
+          <div class="level-card" id="lcard-2">
+            <div class="level-card-header" onclick="toggleLevel(2)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:var(--accent-blue-dim);border-color:var(--accent-blue-border);color:var(--accent-blue)">Level 2</div>
+                  <div class="badge badge-blue">Junior ML Engineer</div>
+                </div>
+                <div class="level-title">Machine Learning Engineering — Core Algorithms</div>
+                <div class="level-subtitle">// 10–14 weeks · the foundation all AI is built on</div>
+              </div>
+              <div class="level-toggle" id="ltog-2">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">Supervised learning</span>
+              <span class="tag">Unsupervised learning</span>
+              <span class="tag">Feature engineering</span>
+              <span class="tag">Model evaluation</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Cross-validation</span>
+              <span class="tag">Overfitting / regularization</span>
+              <span class="tag">Pipelines</span>
+            </div>
+            <div class="level-body" id="lbody-2">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 English Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://coursera.org/specializations/machine-learning-introduction')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Machine Learning Specialization — Andrew Ng</div>
+                      <div class="rr-meta">Coursera · Free audit · Industry gold standard</div>
+                    </div>
+                    <div class="rr-badge">FREE AUDIT</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://developers.google.com/machine-learning/crash-course')">
+                    <div class="rr-icon">🌐</div>
+                    <div class="rr-content">
+                      <div class="rr-title">ML Crash Course — Google Developers</div>
+                      <div class="rr-meta">Google · Free · Visual + interactive exercises</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://kaggle.com/learn/intro-to-machine-learning')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Intro to ML + Intermediate ML — Kaggle</div>
+                      <div class="rr-meta">Kaggle · Hands-on · Certificate · Recommended</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Tamil + Projects</div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Machine Learning Tamil — Krish Naik Tamil</div>
+                      <div class="rr-meta">YouTube · Algorithm explanations in Tamil</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://kaggle.com')">
+                    <div class="rr-icon">🔨</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Kaggle Competitions — Titanic & Housing</div>
+                      <div class="rr-meta">Best way to practice · Community solutions</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Projects</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>End-to-end churn prediction with business impact report</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Credit risk scoring system with model comparison</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Customer segmentation using K-means + business insights</div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🏢 What Companies Check</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Can you explain WHY you chose a model — not just that you used it</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Handling class imbalance, data leakage, overfitting</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>ML Pipelines — sklearn Pipeline, preprocessing, versioning</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Business framing: can you link model performance to business value?</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 Interview Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>Explain bias-variance tradeoff. How do you diagnose overfitting in practice?</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>Your model has 95% accuracy on imbalanced data. Is this good? What do you check?</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>How would you select features for a model? Walk through your process.</div>
+                  <div class="interview-q"><div class="q-num">Q4</div>A production model's performance has dropped. How do you debug it?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles unlocked</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">Junior ML Engineer</div>
+                  <div class="unlock-role">AI Engineer (Trainee)</div>
+                  <div class="unlock-role">Data Scientist (Junior)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L3 -->
+        <div class="level-item" id="li-3">
+          <div class="level-node-col">
+            <div class="level-node l3" onclick="toggleLevel(3)">L3</div>
+          </div>
+          <div class="level-card" id="lcard-3">
+            <div class="level-card-header" onclick="toggleLevel(3)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:var(--accent-amber-dim);border-color:rgba(245,158,11,0.25);color:var(--accent-amber)">Level 3</div>
+                  <div class="badge badge-amber">Mid-level</div>
+                </div>
+                <div class="level-title">Data Scientist / ML Engineer (Mid-Level)</div>
+                <div class="level-subtitle">// 12–16 weeks · business + statistics depth</div>
+              </div>
+              <div class="level-toggle" id="ltog-3">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">Statistics & probability</span>
+              <span class="tag">A/B testing</span>
+              <span class="tag">Experiment tracking (MLflow)</span>
+              <span class="tag">Data storytelling</span>
+              <span class="tag">Business problem framing</span>
+              <span class="tag">Model selection</span>
+              <span class="tag">XGBoost / LightGBM</span>
+              <span class="tag">Time series</span>
+            </div>
+            <div class="level-body" id="lbody-3">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://statquest.org')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">StatQuest with Josh Starmer</div>
+                      <div class="rr-meta">YouTube · Statistics & ML explained clearly · Essential</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://mlflow.org')">
+                    <div class="rr-icon">🌐</div>
+                    <div class="rr-content">
+                      <div class="rr-title">MLflow — Experiment Tracking</div>
+                      <div class="rr-meta">Official docs · Track experiments like companies do</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Projects</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>End-to-end ML system with MLflow tracking + business report</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Time series forecasting — sales / demand prediction</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>A/B test simulation with statistical significance analysis</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 Interview Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>A business wants to increase revenue by 10%. How would you design an ML solution?</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>Explain p-value to a non-technical stakeholder. When is a result actually significant?</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>How do you decide between XGBoost and a Neural Network for a tabular classification task?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles unlocked</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">ML Engineer (Mid)</div>
+                  <div class="unlock-role">Data Scientist</div>
+                  <div class="unlock-role">Analytics Engineer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L4 -->
+        <div class="level-item" id="li-4">
+          <div class="level-node-col">
+            <div class="level-node l4" onclick="toggleLevel(4)">L4</div>
+          </div>
+          <div class="level-card" id="lcard-4">
+            <div class="level-card-header" onclick="toggleLevel(4)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.25);color:var(--accent-red)">Level 4</div>
+                  <div class="badge badge-red">Advanced</div>
+                </div>
+                <div class="level-title">Deep Learning Engineering</div>
+                <div class="level-subtitle">// 14–18 weeks · neural networks, vision, NLP foundations</div>
+              </div>
+              <div class="level-toggle" id="ltog-4">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">Neural Networks</span>
+              <span class="tag">CNN</span>
+              <span class="tag">RNN / LSTM</span>
+              <span class="tag">Transformers</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Transfer learning</span>
+              <span class="tag">GPU training</span>
+              <span class="tag">Model optimization</span>
+            </div>
+            <div class="level-body" id="lbody-4">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://course.fast.ai')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Practical Deep Learning — fast.ai</div>
+                      <div class="rr-meta">Free · Top-down, project-first · Industry loved</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://coursera.org/specializations/deep-learning')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Deep Learning Specialization — Andrew Ng</div>
+                      <div class="rr-meta">Coursera · Free audit · 5 courses</div>
+                    </div>
+                    <div class="rr-badge">FREE AUDIT</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com/watch?v=aircAruvnKk')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Neural Networks — 3Blue1Brown Series</div>
+                      <div class="rr-meta">YouTube · Best visual intuition for neural nets</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Projects</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Image classifier using CNN + Transfer learning (ResNet/EfficientNet)</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Sentiment analysis using LSTM and comparing to Transformers</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Build a small Transformer from scratch (understand attention)</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 Interview Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>Explain the attention mechanism. Why did it replace RNNs for most NLP tasks?</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>How would you reduce GPU memory usage while training a large model?</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>What's gradient vanishing? How do residual connections (ResNet) solve it?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles unlocked</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">Deep Learning Engineer</div>
+                  <div class="unlock-role">AI Research Engineer (Jr.)</div>
+                  <div class="unlock-role">Computer Vision Engineer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L5 -->
+        <div class="level-item" id="li-5">
+          <div class="level-node-col">
+            <div class="level-node l5" onclick="toggleLevel(5)">L5</div>
+          </div>
+          <div class="level-card" id="lcard-5">
+            <div class="level-card-header" onclick="toggleLevel(5)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:var(--accent-purple-dim);border-color:rgba(168,85,247,0.25);color:var(--accent-purple)">Level 5</div>
+                  <div class="badge badge-purple">High demand 2025</div>
+                </div>
+                <div class="level-title">Generative AI Engineering</div>
+                <div class="level-subtitle">// 10–14 weeks · the highest demand AI skill right now</div>
+              </div>
+              <div class="level-toggle" id="ltog-5">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">LLM architecture</span>
+              <span class="tag">Prompt engineering</span>
+              <span class="tag">OpenAI / Anthropic APIs</span>
+              <span class="tag">LangChain / LlamaIndex</span>
+              <span class="tag">RAG systems</span>
+              <span class="tag">Vector databases</span>
+              <span class="tag">Fine-tuning (LoRA/QLoRA)</span>
+              <span class="tag">Embeddings</span>
+            </div>
+            <div class="level-body" id="lbody-5">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://deeplearning.ai/short-courses')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">DeepLearning.AI Short Courses (GenAI)</div>
+                      <div class="rr-meta">15+ free 1-2hr courses · RAG, Agents, LLMs</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://huggingface.co/learn')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Hugging Face NLP Course</div>
+                      <div class="rr-meta">Free · Transformers, fine-tuning, deployment</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://youtube.com/watch?v=bCz4OMemCcA')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Andrej Karpathy — How LLMs Work</div>
+                      <div class="rr-meta">YouTube · Deep understanding · Watch once</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Projects Companies Love</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>RAG chatbot over company documents using LangChain + Chroma</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Fine-tune a small LLM (LLaMA 2) on domain-specific data with LoRA</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>AI research assistant that searches the web + summarizes</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 Interview Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>Explain RAG vs Fine-tuning. When do you use which, and why?</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>How do you handle LLM hallucinations in a production system?</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>Design a document Q&A system for 10 million documents. Walk through your architecture.</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles unlocked</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">Generative AI Engineer</div>
+                  <div class="unlock-role">Prompt Engineer</div>
+                  <div class="unlock-role">AI Product Engineer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L6 -->
+        <div class="level-item" id="li-6">
+          <div class="level-node-col">
+            <div class="level-node l6" onclick="toggleLevel(6)">L6</div>
+          </div>
+          <div class="level-card" id="lcard-6">
+            <div class="level-card-header" onclick="toggleLevel(6)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.25);color:var(--accent-orange)">Level 6</div>
+                  <div class="badge" style="background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.25);color:var(--accent-orange)">Advanced</div>
+                </div>
+                <div class="level-title">AI Agent Engineering</div>
+                <div class="level-subtitle">// 10–14 weeks · autonomous systems, the frontier</div>
+              </div>
+              <div class="level-toggle" id="ltog-6">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">Autonomous agents</span>
+              <span class="tag">Tool-calling</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">CrewAI</span>
+              <span class="tag">Multi-agent systems</span>
+              <span class="tag">Memory systems</span>
+              <span class="tag">Planning & reasoning</span>
+              <span class="tag">Workflow automation</span>
+            </div>
+            <div class="level-body" id="lbody-6">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://deeplearning.ai/short-courses/ai-agents-in-langgraph/')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">AI Agents in LangGraph — DeepLearning.AI</div>
+                      <div class="rr-meta">Free · Official · State-of-the-art agent patterns</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Multi-Agent Systems with CrewAI</div>
+                      <div class="rr-meta">DeepLearning.AI · Free · CrewAI framework</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🔨 Projects</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Multi-agent research pipeline: search → read → synthesize → report</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Code generation + execution + debugging agent loop</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Business automation agent: email → CRM → calendar management</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 Interview Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>How do you prevent an AI agent from getting into infinite loops or taking destructive actions?</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>Design a multi-agent system for automated code review. What agents would you create?</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>How does ReAct (Reason + Act) differ from a simple tool-calling LLM?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles unlocked</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">AI Agent Engineer</div>
+                  <div class="unlock-role">AI Automation Architect</div>
+                  <div class="unlock-role">AI Systems Engineer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L7 -->
+        <div class="level-item" id="li-7">
+          <div class="level-node-col">
+            <div class="level-node l7" onclick="toggleLevel(7)">L7</div>
+          </div>
+          <div class="level-card" id="lcard-7">
+            <div class="level-card-header" onclick="toggleLevel(7)">
+              <div class="level-info">
+                <div class="level-label">
+                  <div class="level-num-badge" style="background:rgba(20,184,166,0.1);border-color:rgba(20,184,166,0.25);color:var(--accent-teal)">Level 7</div>
+                  <div class="badge" style="background:rgba(20,184,166,0.1);border-color:rgba(20,184,166,0.25);color:var(--accent-teal)">Senior / Leadership</div>
+                </div>
+                <div class="level-title">Senior Engineer / AI Architect / Leadership</div>
+                <div class="level-subtitle">// ongoing · system design, ethics, team leadership</div>
+              </div>
+              <div class="level-toggle" id="ltog-7">+</div>
+            </div>
+            <div class="level-tags">
+              <span class="tag">AI system design</span>
+              <span class="tag">Scalability</span>
+              <span class="tag">MLOps</span>
+              <span class="tag">Cost optimization</span>
+              <span class="tag">AI Ethics & governance</span>
+              <span class="tag">Team leadership</span>
+              <span class="tag">Cloud (AWS/GCP/Azure)</span>
+              <span class="tag">Docker / Kubernetes</span>
+            </div>
+            <div class="level-body" id="lbody-7">
+              <div class="level-body-inner">
+                <div class="resource-block">
+                  <div class="resource-block-title">📹 Resources</div>
+                  <div class="resource-row" onclick="openUrl('https://ml.school')">
+                    <div class="rr-icon">▶</div>
+                    <div class="rr-content">
+                      <div class="rr-title">ML.School — Production ML by Santiago</div>
+                      <div class="rr-meta">End-to-end production ML · Highly practical</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                  <div class="resource-row" onclick="openUrl('https://docs.ray.io')">
+                    <div class="rr-icon">🌐</div>
+                    <div class="rr-content">
+                      <div class="rr-title">Ray + Distributed ML Systems</div>
+                      <div class="rr-meta">Scale ML training and inference to clusters</div>
+                    </div>
+                    <div class="rr-badge">FREE</div>
+                  </div>
+                </div>
+                <div class="resource-block">
+                  <div class="resource-block-title">🏢 Senior-Level Expectations</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Design AI systems that serve millions of users reliably</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Reduce model inference cost by 40–80% using quantization, caching</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Lead junior engineers and define team technical direction</div>
+                  <div class="proj-item"><div class="proj-bullet"></div>Implement AI governance and responsible AI policies</div>
+                </div>
+                <div class="interview-block">
+                  <div class="resource-block-title">💬 System Design Questions</div>
+                  <div class="interview-q"><div class="q-num">Q1</div>Design a real-time ML inference system handling 100K requests/second with P99 < 50ms.</div>
+                  <div class="interview-q"><div class="q-num">Q2</div>How would you build a continuous training pipeline that automatically retrains on data drift?</div>
+                  <div class="interview-q"><div class="q-num">Q3</div>Your LLM API costs $50K/month. How do you reduce it by 60% without hurting quality?</div>
+                </div>
+              </div>
+              <div class="unlock-row">
+                <div class="unlock-label">Roles</div>
+                <div class="unlock-roles">
+                  <div class="unlock-role">Senior AI Engineer</div>
+                  <div class="unlock-role">AI Architect</div>
+                  <div class="unlock-role">AI Product Manager</div>
+                  <div class="unlock-role">Head of AI</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /level-list -->
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CERTIFICATIONS PAGE
+════════════════════════════════════════ -->
+<div id="page-certifications" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">Free Certifications</div>
+      <h2>Certificates companies actually care about</h2>
+      <p>We rate each cert by employer recognition. Don't waste time on certificates no recruiter has ever heard of.</p>
+    </div>
+    <div class="cert-filter">
+      <button class="filter-btn active" onclick="filterCerts('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCerts('foundation', this)">Foundation</button>
+      <button class="filter-btn" onclick="filterCerts('ml', this)">Machine Learning</button>
+      <button class="filter-btn" onclick="filterCerts('genai', this)">Generative AI</button>
+      <button class="filter-btn" onclick="filterCerts('cloud', this)">Cloud / MLOps</button>
+    </div>
+    <div class="certs-grid" id="certs-grid"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CAREER MAP PAGE
+════════════════════════════════════════ -->
+<div id="page-careers" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">Career Expectation Map</div>
+      <h2>What companies actually expect for each AI role</h2>
+      <p>Real hiring criteria — not generic job descriptions. Mapped from actual job postings and recruiter feedback.</p>
+    </div>
+    <div class="career-map-grid" id="career-map-grid"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SKILL GAP ANALYZER
+════════════════════════════════════════ -->
+<div id="page-analyzer" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">Skill Gap Analyzer</div>
+      <h2>Am I job-ready?</h2>
+      <p>Check your current skills against company hiring expectations. Get a readiness score and gap analysis.</p>
+    </div>
+    <div class="analyzer-grid">
+      <div class="skill-checklist">
+        <div class="checklist-title">Check your skills</div>
+        <div id="checklist-content"></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px" onclick="analyzeSkills()">Analyze my skills →</button>
+      </div>
+      <div class="readiness-panel" id="readiness-panel">
+        <div style="text-align:center;padding:40px 20px;color:var(--text-tertiary)" id="readiness-placeholder">
+          <div style="font-size:2rem;margin-bottom:12px">📊</div>
+          <div style="font-size:0.83rem">Check your skills on the left,<br>then click Analyze to see your gaps</div>
+        </div>
+        <div id="readiness-result" style="display:none">
+          <div class="readiness-score-wrap">
+            <div class="score-circle">
+              <svg width="90" height="90" viewBox="0 0 90 90">
+                <circle cx="45" cy="45" r="38" fill="none" stroke="var(--border-default)" stroke-width="6"/>
+                <circle cx="45" cy="45" r="38" fill="none" stroke="var(--accent-blue)" stroke-width="6"
+                  stroke-dasharray="239" stroke-dashoffset="239" id="score-arc" stroke-linecap="round"
+                  style="transition:stroke-dashoffset 1.2s var(--ease-out)"/>
+              </svg>
+              <div class="score-num" id="score-num">0%</div>
+            </div>
+            <div>
+              <div class="score-info-title" id="score-title">Analyzing...</div>
+              <div class="score-info-sub" id="score-sub">Your skill assessment results will appear here</div>
+            </div>
+          </div>
+          <div class="skill-bars" id="skill-bars"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     INTERVIEW PREP
+════════════════════════════════════════ -->
+<div id="page-interview" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">Interview Preparation</div>
+      <h2>Questions by role and level</h2>
+      <p>Curated from real company interviews. Covers technical, conceptual, and system design questions at every level.</p>
+    </div>
+    <div class="interview-grid">
+      <div class="interview-nav" id="interview-nav"></div>
+      <div class="interview-content" id="interview-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     GLOSSARY
+════════════════════════════════════════ -->
+<div id="page-glossary" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">AI Glossary</div>
+      <h2>Every AI term, explained clearly</h2>
+      <p>No jargon. Plain English definitions with context for when and why each term matters.</p>
+    </div>
+    <div class="glossary-layout">
+      <div class="glossary-az">
+        <div class="az-title">Jump to</div>
+        <div class="az-letters" id="az-letters"></div>
+      </div>
+      <div>
+        <input class="gloss-search" id="gloss-search" placeholder="Search terms... (e.g. gradient descent)" oninput="filterGlossary(this.value)">
+        <div class="glossary-list" id="glossary-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     MATH GUIDE
+════════════════════════════════════════ -->
+<div id="page-math" class="page">
+  <div class="container">
+    <div class="page-header animate-in">
+      <div class="label" style="margin-bottom:8px">Math for AI</div>
+      <h2>The math behind AI, explained visually</h2>
+      <p>You don't need a math degree. You need to understand what these concepts do — and when AI uses them.</p>
+    </div>
+    <div class="math-grid" id="math-grid"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">⬡ PathwayAI</div>
+      <div class="footer-copy">Industry-aligned AI career roadmap · 100% free</div>
+    </div>
+    <div class="footer-links">
+      <a onclick="showPage('roadmap')">Roadmap</a>
+      <a onclick="showPage('careers')">Career Map</a>
+      <a onclick="showPage('certifications')">Certs</a>
+      <a onclick="showPage('interview')">Interview</a>
+      <a onclick="showPage('glossary')">Glossary</a>
+      <a onclick="showPage('math')">Math Guide</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════
+let selectedRole = null;
+let checkedSkills = {};
+let activeInterviewSection = 0;
+
+// ════════════════════════════════════════
+// THEME
+// ════════════════════════════════════════
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-btn').textContent = isDark ? '☀︎' : '☾';
+}
+
+// ════════════════════════════════════════
+// ONBOARDING
+// ════════════════════════════════════════
+const roleData = {
+  analyst: { icon: '📊', name: 'Data Analyst / Scientist', color: '#22c55e', levels: [0,1,2,3], timeline: '6–10 months' },
+  ml:      { icon: '🤖', name: 'ML / AI Engineer', color: '#3b82f6', levels: [0,1,2,3,4], timeline: '12–18 months' },
+  genai:   { icon: '✨', name: 'Generative AI Engineer', color: '#a855f7', levels: [0,1,2,5], timeline: '8–14 months' },
+  prompt:  { icon: '✍️', name: 'Prompt Engineer', color: '#f59e0b', levels: [0,1,5], timeline: '3–6 months' },
+  agent:   { icon: '🧩', name: 'AI Agent Engineer', color: '#f97316', levels: [0,1,2,3,4,5,6], timeline: '15–20 months' },
+  senior:  { icon: '🏗', name: 'Senior / AI Architect', color: '#14b8a6', levels: [0,1,2,3,4,5,6,7], timeline: '3–5 years' }
+};
+
+function selectRole(id) {
+  selectedRole = id;
+  const data = roleData[id];
+
+  // Exit onboarding
+  const ob = document.getElementById('onboarding');
+  ob.classList.add('exit');
+  setTimeout(() => ob.style.display = 'none', 500);
+
+  // Update persona card
+  document.getElementById('home-persona-avatar').textContent = data.icon;
+  document.getElementById('home-persona-avatar').style.background = data.color + '22';
+  document.getElementById('home-persona-name').textContent = data.name;
+  document.getElementById('home-persona-meta').textContent = data.timeline + ' to target role';
+
+  // Progress levels
+  const badges = document.querySelectorAll('.lvl-badge');
+  badges.forEach((b, i) => {
+    b.className = 'lvl-badge ' + (data.levels.includes(i) ? 'current' : 'locked');
+    b.textContent = 'L' + i;
+  });
+
+  // Progress bar
+  const pct = Math.round((data.levels.length / 8) * 100);
+  document.getElementById('home-prog-pct').textContent = pct + '%';
+  setTimeout(() => {
+    document.getElementById('home-prog-fill').style.width = pct + '%';
+  }, 300);
+
+  initChecklist();
+}
+
+function goHome() {
+  showPage('home');
+}
+
+// ════════════════════════════════════════
+// PAGE NAVIGATION
+// ════════════════════════════════════════
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + name);
+  if (page) {
+    page.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Update nav links
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const map = { roadmap:'Roadmap', careers:'Career Map', certifications:'Certifications', interview:'Interview Prep', analyzer:'Skill Gap', glossary:'Glossary', math:'Math Guide' };
+  document.querySelectorAll('.nav-link').forEach(l => {
+    if (l.textContent === map[name]) l.classList.add('active');
+  });
+
+  // Init page-specific content
+  if (name === 'roadmap') initRoadmapObserver();
+  if (name === 'certifications') buildCerts();
+  if (name === 'careers') buildCareerMap();
+  if (name === 'analyzer') initChecklist();
+  if (name === 'interview') buildInterview();
+  if (name === 'glossary') buildGlossary();
+  if (name === 'math') buildMath();
+
+  setTimeout(initAnimations, 100);
+}
+
+// ════════════════════════════════════════
+// ROADMAP
+// ════════════════════════════════════════
+function toggleLevel(n) {
+  const card = document.getElementById('lcard-' + n);
+  const tog = document.getElementById('ltog-' + n);
+  const isOpen = card.classList.contains('open');
+  // Close all
+  for (let i = 0; i <= 7; i++) {
+    document.getElementById('lcard-' + i)?.classList.remove('open');
+    const t = document.getElementById('ltog-' + i);
+    if (t) t.textContent = '+';
+  }
+  if (!isOpen) {
+    card.classList.add('open');
+    if (tog) tog.textContent = '−';
+  }
+}
+
+function openUrl(url) { window.open(url, '_blank'); }
+
+function initRoadmapObserver() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.level-item').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.06) + 's';
+    observer.observe(el);
+  });
+}
+
+// ════════════════════════════════════════
+// CERTIFICATIONS DATA
+// ════════════════════════════════════════
+const certsData = [
+  { provider:'Google', name:'AI Essentials Certificate', logo:'🔵', free:true, level:'Foundation', tag:'foundation', importance:'high', impText:'Employers recognize Google certifications. Strong signal for non-technical roles. Good first credential.' },
+  { provider:'University of Helsinki', name:'Elements of AI', logo:'🎓', free:true, level:'Beginner', tag:'foundation', importance:'mid', impText:'Great for learning but low employer recognition. Good as a first step — supplement with more technical certs.' },
+  { provider:'DeepLearning.AI', name:'Machine Learning Specialization (Ng)', logo:'🟠', free:false, freeAudit:true, level:'Intermediate', tag:'ml', importance:'high', impText:'Andrew Ng\'s brand is globally recognized. One of the most credible ML certifications in the industry.' },
+  { provider:'Google (Kaggle)', name:'Intro to ML + Intermediate ML', logo:'📊', free:true, level:'Intermediate', tag:'ml', importance:'high', impText:'Kaggle certificates are portfolio-verifiable. Companies check Kaggle ranking alongside these.' },
+  { provider:'DeepLearning.AI', name:'Deep Learning Specialization', logo:'🟠', free:false, freeAudit:true, level:'Advanced', tag:'ml', importance:'high', impText:'Industry standard for DL roles. 5 courses. Cited in thousands of AI engineering CVs.' },
+  { provider:'DeepLearning.AI + OpenAI', name:'ChatGPT Prompt Engineering', logo:'🤖', free:true, level:'Beginner', tag:'genai', importance:'mid', impText:'Good for prompt engineer roles. Recognized within the GenAI community. 1 hour.' },
+  { provider:'Hugging Face', name:'NLP Course with Transformers', logo:'🤗', free:true, level:'Advanced', tag:'genai', importance:'high', impText:'HuggingFace is THE library for transformers. This cert shows hands-on LLM engineering skill.' },
+  { provider:'DeepLearning.AI', name:'Generative AI with LLMs', logo:'🟠', free:false, freeAudit:true, level:'Advanced', tag:'genai', importance:'high', impText:'AWS + DeepLearning.AI partnership. Production-focused GenAI. Very relevant for 2024+ hiring.' },
+  { provider:'Microsoft (Azure)', name:'AI Fundamentals (AI-900)', logo:'⚡', free:true, level:'Foundation', tag:'cloud', importance:'mid', impText:'Useful for Microsoft/Azure-focused companies. Entry-level signal — not sufficient alone for ML roles.' },
+  { provider:'AWS', name:'Machine Learning Specialty (MLS-C01)', logo:'☁️', free:false, freeAudit:false, level:'Advanced', tag:'cloud', importance:'high', impText:'Expensive but industry-recognized. Worth pursuing if targeting AWS-heavy companies. Salary impact.' },
+  { provider:'Kaggle', name:'Machine Learning with Python', logo:'📊', free:true, level:'Intermediate', tag:'ml', importance:'mid', impText:'Good for CV. Portfolio is more important than this cert alone — use Kaggle competitions.' },
+  { provider:'Harvard / edX', name:'CS50 AI with Python', logo:'🎓', free:true, level:'Intermediate', tag:'foundation', importance:'high', impText:'Harvard brand. Strong CS + AI foundation. Well-respected in FAANG interviews as a quality signal.' },
+];
+
+function buildCerts(filter = 'all') {
+  const grid = document.getElementById('certs-grid');
+  if (!grid) return;
+  const filtered = filter === 'all' ? certsData : certsData.filter(c => c.tag === filter);
+  grid.innerHTML = filtered.map(c => `
+    <div class="cert-card animate-in">
+      <div class="cert-header">
+        <div class="cert-logo">${c.logo}</div>
+        <div class="cert-info">
+          <div class="cert-provider">${c.provider}</div>
+          <div class="cert-name">${c.name}</div>
+        </div>
+      </div>
+      <div class="cert-tags">
+        <span class="badge ${c.free ? 'badge-green' : c.freeAudit ? 'badge-amber' : 'badge-red'}">${c.free ? 'FREE' : c.freeAudit ? 'FREE AUDIT' : 'PAID'}</span>
+        <span class="badge badge-blue">${c.level}</span>
+        <span class="badge ${c.importance === 'high' ? 'badge-green' : c.importance === 'mid' ? 'badge-amber' : 'badge-purple'}">${c.importance === 'high' ? '⬆ High value' : c.importance === 'mid' ? '→ Medium value' : '↓ Low value'}</span>
+      </div>
+      <div class="cert-importance cert-value-${c.importance}">
+        <div class="importance-label">Employer recognition</div>
+        ${c.impText}
+      </div>
+    </div>
+  `).join('');
+  setTimeout(initAnimations, 100);
+}
+
+function filterCerts(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildCerts(tag);
+}
+
+// ════════════════════════════════════════
+// CAREER MAP
+// ════════════════════════════════════════
+const careerMapData = [
+  {
+    icon: '📊', color: '#22c55e', colorDim: 'rgba(34,197,94,0.1)',
+    title: 'Data Analyst', salary: '$65K–$110K / year',
+    skills: ['Python','SQL','Pandas','Excel','Tableau/Power BI','Statistics basics'],
+    tools: ['Jupyter','BigQuery','Looker','dbt'],
+    projects: ['Dashboards','EDA reports','Business KPI tracking'],
+    recruiterChecks: ['GitHub with data projects','Kaggle activity','Business impact framing'],
+    timeline: '5–8 months from zero'
+  },
+  {
+    icon: '🔬', color: '#3b82f6', colorDim: 'rgba(59,130,246,0.1)',
+    title: 'Data Scientist', salary: '$90K–$160K / year',
+    skills: ['Python','Statistics','ML algorithms','A/B testing','Data storytelling','SQL'],
+    tools: ['Scikit-learn','MLflow','Plotly','Spark (basics)'],
+    projects: ['Churn prediction','Recommendation systems','Forecasting'],
+    recruiterChecks: ['End-to-end ML projects','Stat intuition in interview','Business context framing'],
+    timeline: '10–14 months from zero'
+  },
+  {
+    icon: '🤖', color: '#6366f1', colorDim: 'rgba(99,102,241,0.1)',
+    title: 'ML Engineer', salary: '$110K–$185K / year',
+    skills: ['Python','ML algorithms deep','Feature engineering','Model deployment','APIs','Docker basics'],
+    tools: ['Scikit-learn','FastAPI','Docker','MLflow','Kubeflow'],
+    projects: ['Production ML APIs','Retraining pipelines','Model monitoring'],
+    recruiterChecks: ['Code quality (reviewed on screen)','MLOps understanding','System design ability'],
+    timeline: '12–18 months from zero'
+  },
+  {
+    icon: '✨', color: '#a855f7', colorDim: 'rgba(168,85,247,0.1)',
+    title: 'Generative AI Engineer', salary: '$130K–$200K / year',
+    skills: ['LLM architecture','Prompt engineering','RAG systems','LangChain','Vector DBs','Fine-tuning'],
+    tools: ['OpenAI API','Anthropic API','Chroma/Pinecone','LangGraph','FastAPI'],
+    projects: ['RAG chatbots','AI assistants','LLM pipelines'],
+    recruiterChecks: ['Production GenAI app on GitHub','Handles hallucinations','Knows cost optimization'],
+    timeline: '8–14 months if Python-ready'
+  },
+  {
+    icon: '✍️', color: '#f59e0b', colorDim: 'rgba(245,158,11,0.1)',
+    title: 'Prompt Engineer', salary: '$70K–$140K / year',
+    skills: ['LLM understanding','Prompt patterns','Chain-of-thought','System prompts','Evaluation','Red-teaming'],
+    tools: ['OpenAI Playground','LangSmith','PromptFlow','Weights & Biases'],
+    projects: ['Prompt libraries','AI workflow automation','Evaluation frameworks'],
+    recruiterChecks: ['Portfolio of tested prompts','LLM evaluation understanding','Clear communication'],
+    timeline: '3–6 months · fastest AI entry'
+  },
+  {
+    icon: '🧩', color: '#f97316', colorDim: 'rgba(249,115,22,0.1)',
+    title: 'AI Agent Engineer', salary: '$140K–$210K / year',
+    skills: ['All GenAI skills','Agentic patterns','Tool-calling','Multi-agent systems','Memory systems','Orchestration'],
+    tools: ['LangGraph','CrewAI','AutoGen','Celery','Redis','Docker'],
+    projects: ['Autonomous research agents','Code generation agents','Business automation'],
+    recruiterChecks: ['Complex agent system on GitHub','Understands failure modes','Production deployment exp'],
+    timeline: '18–24 months from zero'
+  },
+];
+
+function buildCareerMap() {
+  const grid = document.getElementById('career-map-grid');
+  if (!grid) return;
+  grid.innerHTML = careerMapData.map(c => `
+    <div class="career-map-card animate-in">
+      <div class="cmcard-header">
+        <div class="cmcard-icon" style="background:${c.colorDim}">${c.icon}</div>
+        <div>
+          <div class="cmcard-title">${c.title}</div>
+          <div class="cmcard-salary">${c.salary}</div>
+        </div>
+      </div>
+      <div class="cmcard-body">
+        <div>
+          <div class="cmcard-section-label">Skills companies expect</div>
+          <div class="cmcard-items">${c.skills.map(s => `<span class="cmcard-item">${s}</span>`).join('')}</div>
+        </div>
+        <div>
+          <div class="cmcard-section-label">Tools / Stack</div>
+          <div class="cmcard-items">${c.tools.map(t => `<span class="cmcard-item">${t}</span>`).join('')}</div>
+        </div>
+        <div>
+          <div class="cmcard-section-label">Projects needed</div>
+          <div class="cmcard-items">${c.projects.map(p => `<span class="cmcard-item">${p}</span>`).join('')}</div>
+        </div>
+        <div>
+          <div class="cmcard-section-label">What recruiters actually check</div>
+          <div class="cmcard-items">${c.recruiterChecks.map(r => `<span class="cmcard-item">${r}</span>`).join('')}</div>
+        </div>
+        <div class="cmcard-timeline">${c.timeline}</div>
+      </div>
+    </div>
+  `).join('');
+  setTimeout(initAnimations, 100);
+}
+
+// ════════════════════════════════════════
+// SKILL GAP ANALYZER
+// ════════════════════════════════════════
+const skillSections = [
+  { label: 'Core Python', skills: ['Python basics','Functions & OOP','Data structures','File I/O','Error handling'] },
+  { label: 'Data Libraries', skills: ['NumPy','Pandas','Matplotlib','SQL queries','Data cleaning'] },
+  { label: 'Machine Learning', skills: ['Supervised learning','Feature engineering','Model evaluation','Scikit-learn pipelines','Overfitting / regularization'] },
+  { label: 'Deep Learning', skills: ['Neural network fundamentals','CNN / RNN','Transformers / Attention','PyTorch or TensorFlow','Transfer learning'] },
+  { label: 'Generative AI', skills: ['LLM understanding','Prompt engineering','RAG systems','LangChain','Vector databases'] },
+  { label: 'Production / MLOps', skills: ['Git & version control','Docker basics','API deployment (FastAPI)','Cloud basics (AWS/GCP)','Monitoring & logging'] },
+];
+
+function initChecklist() {
+  const el = document.getElementById('checklist-content');
+  if (!el) return;
+  el.innerHTML = skillSections.map((sec, si) => `
+    <div class="checklist-section">
+      <div class="checklist-label">${sec.label}</div>
+      ${sec.skills.map((skill, ki) => `
+        <div class="check-item" onclick="toggleSkill('${si}-${ki}', this)">
+          <div class="check-box ${checkedSkills[si+'-'+ki] ? 'checked' : ''}" id="cb-${si}-${ki}">
+            ${checkedSkills[si+'-'+ki] ? '✓' : ''}
+          </div>
+          <div class="check-text">${skill}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function toggleSkill(key, row) {
+  checkedSkills[key] = !checkedSkills[key];
+  const cb = row.querySelector('.check-box');
+  cb.classList.toggle('checked', checkedSkills[key]);
+  cb.textContent = checkedSkills[key] ? '✓' : '';
+}
+
+function analyzeSkills() {
+  const total = skillSections.reduce((sum, s) => sum + s.skills.length, 0);
+  const checked = Object.values(checkedSkills).filter(Boolean).length;
+  const pct = Math.round((checked / total) * 100);
+
+  const sectionScores = skillSections.map((sec, si) => {
+    const done = sec.skills.filter((_, ki) => checkedSkills[si+'-'+ki]).length;
+    return { label: sec.label, pct: Math.round((done / sec.skills.length) * 100) };
+  });
+
+  document.getElementById('readiness-placeholder').style.display = 'none';
+  document.getElementById('readiness-result').style.display = 'block';
+
+  // Score arc
+  const arc = 239;
+  const offset = arc - (arc * pct / 100);
+  setTimeout(() => {
+    document.getElementById('score-arc').style.strokeDashoffset = offset;
+    document.getElementById('score-num').textContent = pct + '%';
+  }, 100);
+
+  // Title
+  const levels = [
+    [0, 25, 'Just Starting Out', 'Focus on Python fundamentals and data basics first. Levels 0–1 are your priority.'],
+    [25, 50, 'Building Foundation', 'Good start. Strengthen ML and data skills before moving to GenAI.'],
+    [50, 75, 'Intermediate Level', 'Solid base. Add production and GenAI skills to open mid-level roles.'],
+    [75, 90, 'Near Job-Ready', 'Strong foundation. Focus on production projects and interview prep.'],
+    [90, 101, 'Job-Ready', 'Excellent coverage. Apply now while building one strong portfolio project per role.']
+  ];
+  const [,,title, sub] = levels.find(([min, max]) => pct >= min && pct < max) || levels[4];
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-sub').textContent = sub;
+
+  // Skill bars
+  const barColors = { 'Core Python':'#22c55e','Data Libraries':'#3b82f6','Machine Learning':'#6366f1','Deep Learning':'#a855f7','Generative AI':'#f97316','Production / MLOps':'#f59e0b' };
+  document.getElementById('skill-bars').innerHTML = `<div style="font-size:0.83rem;font-weight:700;margin-bottom:16px;color:var(--text-primary)">Skill breakdown</div>` +
+    sectionScores.map(s => `
+      <div class="skill-bar-row">
+        <div class="skill-bar-label">
+          <span>${s.label}</span>
+          <span>${s.pct}%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="background:${barColors[s.label] || '#3b82f6'};width:0" data-w="${s.pct}%"></div>
+        </div>
+      </div>
+    `).join('');
+
+  // Animate bars
+  setTimeout(() => {
+    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.w;
+    });
+  }, 200);
+}
+
+// ════════════════════════════════════════
+// INTERVIEW PREP
+// ════════════════════════════════════════
+const interviewData = [
+  {
+    title: 'Python & Data', icon: '🐍', color: '#22c55e',
+    questions: [
+      { q: 'What is the difference between deep copy and shallow copy in Python?', d: 'easy' },
+      { q: 'How do you handle memory-efficient iteration over large datasets in Pandas?', d: 'med' },
+      { q: 'Write a function that removes outliers from a DataFrame using IQR method.', d: 'med' },
+      { q: 'Explain generators vs list comprehensions. When do you use generators?', d: 'easy' },
+      { q: 'How would you profile a slow Python script and identify bottlenecks?', d: 'hard' },
+    ]
+  },
+  {
+    title: 'Machine Learning', icon: '🤖', color: '#3b82f6',
+    questions: [
+      { q: 'Explain precision vs recall. When do you optimize for each?', d: 'easy' },
+      { q: 'Your model achieves 99% accuracy on training data but 60% on test data. What happened?', d: 'easy' },
+      { q: 'How do you handle imbalanced datasets? Walk through your approach.', d: 'med' },
+      { q: 'Explain gradient boosting. How is XGBoost different from standard gradient boosting?', d: 'med' },
+      { q: 'Design a feature engineering pipeline for a user churn prediction model.', d: 'hard' },
+      { q: 'How do you detect and handle data leakage in an ML pipeline?', d: 'hard' },
+    ]
+  },
+  {
+    title: 'Deep Learning', icon: '🧠', color: '#6366f1',
+    questions: [
+      { q: 'Explain how backpropagation works at a high level.', d: 'med' },
+      { q: 'Why do we use batch normalization? What problem does it solve?', d: 'med' },
+      { q: 'Explain the self-attention mechanism in Transformers. Why did it replace RNNs?', d: 'hard' },
+      { q: 'What is the vanishing gradient problem? How do residual connections fix it?', d: 'med' },
+      { q: 'How would you speed up training of a large model without more GPUs?', d: 'hard' },
+    ]
+  },
+  {
+    title: 'Generative AI', icon: '✨', color: '#a855f7',
+    questions: [
+      { q: 'Explain RAG vs fine-tuning. Give concrete scenarios for each.', d: 'med' },
+      { q: 'How do you evaluate LLM output quality in a production system?', d: 'hard' },
+      { q: 'Design a document Q&A system for 10 million documents. Describe your architecture.', d: 'hard' },
+      { q: 'How do you prevent prompt injection attacks in a customer-facing AI system?', d: 'hard' },
+      { q: 'What are token limits and context windows? How do you handle documents larger than context?', d: 'med' },
+    ]
+  },
+  {
+    title: 'System Design', icon: '🏗', color: '#14b8a6',
+    questions: [
+      { q: 'Design an ML inference service serving 100K requests/second at P99 < 50ms.', d: 'hard' },
+      { q: 'How would you build a model monitoring system that detects data drift?', d: 'hard' },
+      { q: 'Design a recommendation system for a streaming platform with 50M users.', d: 'hard' },
+      { q: 'Your LLM API costs $80K/month. How do you reduce costs by 60% without hurting quality?', d: 'hard' },
+      { q: 'Design a continuous training pipeline that retrains models automatically.', d: 'hard' },
+    ]
+  },
+];
+
+function buildInterview() {
+  const nav = document.getElementById('interview-nav');
+  const content = document.getElementById('interview-content');
+  if (!nav || !content) return;
+
+  const diffColors = { easy: 'diff-easy', med: 'diff-med', hard: 'diff-hard' };
+
+  nav.innerHTML = interviewData.map((sec, i) => `
+    <button class="interview-nav-item ${i === activeInterviewSection ? 'active' : ''}" onclick="switchInterview(${i})">
+      <div class="interview-nav-dot" style="background:${sec.color}"></div>
+      ${sec.title}
+    </button>
+  `).join('');
+
+  function renderSection(i) {
+    const sec = interviewData[i];
+    content.innerHTML = `
+      <div class="iq-section">
+        <div class="iq-section-header">
+          <div class="iq-icon">${sec.icon}</div>
+          <div class="iq-title">${sec.title} Questions</div>
+        </div>
+        <div class="iq-list">
+          ${sec.questions.map((q, qi) => `
+            <div class="iq-item">
+              <div class="iq-n">Q${qi+1}</div>
+              <div class="iq-q">${q.q}</div>
+              <div class="iq-difficulty ${diffColors[q.d]}">${q.d.toUpperCase()}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  window.switchInterview = function(i) {
+    activeInterviewSection = i;
+    document.querySelectorAll('.interview-nav-item').forEach((b, idx) => {
+      b.classList.toggle('active', idx === i);
+    });
+    renderSection(i);
+  };
+
+  renderSection(activeInterviewSection);
+}
+
+// ════════════════════════════════════════
+// GLOSSARY
+// ════════════════════════════════════════
+const glossaryData = [
+  { term: 'Artificial Intelligence (AI)', def: 'Systems designed to perform tasks that normally require human intelligence — reasoning, learning, perception, decision-making.' },
+  { term: 'Machine Learning (ML)', def: 'A subset of AI where models learn patterns from data without being explicitly programmed for every scenario.' },
+  { term: 'Deep Learning (DL)', def: 'ML using multi-layer neural networks that can automatically learn representations from raw data — images, text, audio.' },
+  { term: 'Large Language Model (LLM)', def: 'Massive transformer-based models (GPT-4, Gemini, Claude) trained on text at scale. Capable of reasoning, writing, coding and more.' },
+  { term: 'Supervised Learning', def: 'Training models on labeled data (input → output pairs). The model learns to predict outputs for unseen inputs.' },
+  { term: 'Unsupervised Learning', def: 'Training on unlabeled data. The model finds patterns, clusters or structure without being told what to look for.' },
+  { term: 'Reinforcement Learning (RL)', def: 'Learning via reward and punishment. An agent takes actions in an environment and learns to maximize cumulative reward.' },
+  { term: 'Transformer', def: 'The neural network architecture behind all modern LLMs. Uses "attention" to relate all positions in a sequence simultaneously.' },
+  { term: 'Attention Mechanism', def: 'Allows a model to weigh the importance of different words/tokens when processing a sequence. The core innovation of Transformers.' },
+  { term: 'Embedding', def: 'Converting text/images into numerical vectors that capture semantic meaning. Similar concepts are closer in vector space.' },
+  { term: 'RAG (Retrieval Augmented Generation)', def: 'Combining LLMs with external knowledge retrieval. The model fetches relevant context before generating a response.' },
+  { term: 'Fine-tuning', def: 'Further training a pre-trained model on a specific dataset to adapt its behavior for a particular task or domain.' },
+  { term: 'LoRA (Low-Rank Adaptation)', def: 'An efficient fine-tuning technique that adds small trainable matrices to a frozen model — drastically reducing memory requirements.' },
+  { term: 'Vector Database', def: 'A database optimized for storing and searching embedding vectors by similarity. Used in RAG systems. Examples: Pinecone, Chroma, Weaviate.' },
+  { term: 'Prompt Engineering', def: 'The practice of designing effective inputs (prompts) to get the best outputs from AI language models.' },
+  { term: 'Overfitting', def: 'When a model memorizes training data but fails to generalize to new data. Signs: high training accuracy, low validation accuracy.' },
+  { term: 'Underfitting', def: 'When a model is too simple to capture the underlying patterns. Signs: poor performance on both training and validation data.' },
+  { term: 'Bias-Variance Tradeoff', def: 'The tension between model simplicity (high bias = underfit) and complexity (high variance = overfit). Good models balance both.' },
+  { term: 'Feature Engineering', def: 'Creating, selecting, or transforming input variables to improve model performance. Often the highest-impact skill in ML.' },
+  { term: 'Cross-validation', def: 'Evaluating model performance by training/testing on multiple data splits. More reliable than a single train-test split.' },
+  { term: 'Gradient Descent', def: 'The optimization algorithm used to train neural networks. Iteratively adjusts model parameters to minimize loss.' },
+  { term: 'Backpropagation', def: 'The algorithm that computes gradients by propagating the error backward through a neural network layer by layer.' },
+  { term: 'Regularization', def: 'Techniques (L1, L2, Dropout) that prevent overfitting by penalizing model complexity during training.' },
+  { term: 'Transfer Learning', def: 'Using a model pre-trained on one task as a starting point for a different (often related) task. Dramatically reduces training time.' },
+  { term: 'Hallucination', def: 'When an LLM generates confident, plausible-sounding but factually incorrect or fabricated information.' },
+  { term: 'Context Window', def: 'The maximum number of tokens an LLM can process at once. GPT-4 Turbo: 128K tokens. Claude: 200K tokens.' },
+  { term: 'Token', def: 'The basic unit LLMs process — roughly 3/4 of a word. "ChatGPT" = 2 tokens. Cost and context limits are measured in tokens.' },
+  { term: 'Inference', def: 'Running a trained model to get predictions on new data. "Training" creates the model; "inference" uses it.' },
+  { term: 'MLOps', def: 'Practices for deploying, monitoring, and maintaining ML models in production. Includes CI/CD, monitoring, retraining pipelines.' },
+  { term: 'Data Drift', def: 'When the statistical properties of input data change over time, degrading model performance. Requires monitoring and retraining.' },
+];
+
+let glossaryFiltered = [...glossaryData];
+
+function buildGlossary(filter = '') {
+  const list = document.getElementById('glossary-list');
+  if (!list) return;
+  glossaryFiltered = filter ? glossaryData.filter(g => g.term.toLowerCase().includes(filter) || g.def.toLowerCase().includes(filter)) : [...glossaryData];
+  list.innerHTML = glossaryFiltered.map(g => `
+    <div class="gloss-item animate-in">
+      <div class="gloss-term">${g.term}</div>
+      <div class="gloss-def">${g.def}</div>
+    </div>
+  `).join('');
+
+  // A-Z letters
+  const az = document.getElementById('az-letters');
+  if (az) {
+    const letters = [...new Set(glossaryData.map(g => g.term[0].toUpperCase()))].sort();
+    az.innerHTML = letters.map(l => `<div class="az-letter" onclick="filterGlossary('${l.toLowerCase()}')">${l}</div>`).join('');
+  }
+
+  setTimeout(initAnimations, 100);
+}
+
+function filterGlossary(val) {
+  buildGlossary(val.toLowerCase());
+}
+
+// ════════════════════════════════════════
+// MATH GUIDE
+// ════════════════════════════════════════
+const mathData = [
+  { icon: '📐', title: 'Linear Algebra', formula: 'A × v = λv\n\ny = Wx + b', explain: 'Matrices transform data. Every neural network layer is a matrix multiplication. Weights (W) and biases (b) are learned during training.', why: 'Why it matters: Neural networks are chains of matrix multiplications. Understanding this = understanding how data flows through a model.' },
+  { icon: '📊', title: 'Statistics & Probability', formula: 'P(A|B) = P(B|A)P(A) / P(B)\n\nμ = (1/n)Σxi', explain: 'Bayes theorem tells us how to update beliefs with evidence. Mean (μ) describes the center of data. These are the language of ML evaluation.', why: 'Why it matters: Model evaluation, A/B testing, uncertainty quantification — all built on probability.' },
+  { icon: '⬇', title: 'Gradient Descent', formula: 'θ = θ - α∇J(θ)\n\nJ(θ) = (1/2m)Σ(ŷ-y)²', explain: 'Loss J measures how wrong our model is. We compute the gradient (slope) of J with respect to weights θ, then move slightly downhill (α = learning rate).', why: 'Why it matters: This is how ALL neural networks learn. Every training step = one gradient descent step.' },
+  { icon: '🔀', title: 'Chain Rule (Backprop)', formula: 'dL/dW = dL/dŷ × dŷ/dW', explain: 'Calculus chain rule applied to neural networks. Allows us to compute how much each weight contributed to the final error — enabling gradient updates.', why: 'Why it matters: Backpropagation = chain rule applied recursively. The foundation of how deep networks train.' },
+  { icon: '📏', title: 'Distance & Similarity', formula: 'cos(θ) = (A·B) / (|A||B|)\n\nd(A,B) = √Σ(Ai-Bi)²', explain: 'Cosine similarity measures angle between vectors (used in NLP/embeddings). Euclidean distance measures geometric distance (used in clustering).', why: 'Why it matters: Embeddings, semantic search, RAG retrieval, and clustering all depend on measuring similarity.' },
+  { icon: '📉', title: 'Loss Functions', formula: 'MSE: Σ(y-ŷ)²/n\n\nCross-Entropy: -Σyi·log(ŷi)', explain: 'MSE is used for regression problems — penalizes large errors more. Cross-entropy is used for classification — measures how different predicted vs actual distributions are.', why: 'Why it matters: The choice of loss function determines what your model optimizes for. Wrong loss = wrong model.' },
+  { icon: '⚡', title: 'Activation Functions', formula: 'ReLU: max(0, x)\n\nSoftmax: eˣⁱ / Σeˣʲ', explain: 'Without activation functions, neural networks are just linear. ReLU adds non-linearity (hidden layers). Softmax converts logits to probabilities (output layer).', why: 'Why it matters: Activations give neural networks the ability to learn complex, non-linear patterns.' },
+  { icon: '🎯', title: 'Evaluation Metrics', formula: 'Precision = TP/(TP+FP)\nRecall = TP/(TP+FN)\nF1 = 2·P·R/(P+R)', explain: 'True Positive (TP): correctly predicted positive. False Positive (FP): wrong positive prediction. F1 balances precision and recall.', why: 'Why it matters: Accuracy is often misleading (imbalanced data). Precision/Recall/F1 give real picture of model performance.' },
+];
+
+function buildMath() {
+  const grid = document.getElementById('math-grid');
+  if (!grid) return;
+  grid.innerHTML = mathData.map(m => `
+    <div class="math-card animate-in">
+      <div class="math-card-header">
+        <div class="math-icon">${m.icon}</div>
+        <div class="math-title">${m.title}</div>
+      </div>
+      <div class="math-card-body">
+        <div class="math-formula">${m.formula}</div>
+        <div class="math-explain">${m.explain}</div>
+        <div class="math-why"><strong>↳ In plain English</strong>${m.why}</div>
+      </div>
+    </div>
+  `).join('');
+  setTimeout(initAnimations, 100);
+}
+
+// ════════════════════════════════════════
+// ANIMATIONS
+// ════════════════════════════════════════
+function initAnimations() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.animate-in:not(.in-view)').forEach(el => observer.observe(el));
+}
+initAnimations();
+setTimeout(initAnimations, 500);
+
+// ════════════════════════════════════════
+// FLOATING PANEL
+// ════════════════════════════════════════
+function toggleFloat() {
+  document.getElementById('float-panel').classList.toggle('open');
+}
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+// Build glossary on load for A-Z sidebar
+setTimeout(() => {
+  buildGlossary();
+  initRoadmapObserver();
+}, 200);
+</script>
+</body>
+</html>
